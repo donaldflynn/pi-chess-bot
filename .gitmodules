@@ -4,3 +4,6 @@
 [submodule "lc0"]
 	path = lc0
 	url = git@github.com:donaldflynn/lc0.git
+[submodule "OpenBLAS"]
+	path = OpenBLAS
+	url = https://github.com/xianyi/OpenBLAS.git
