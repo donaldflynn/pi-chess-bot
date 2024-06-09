@@ -20,4 +20,23 @@ COPY lichess-bot/requirements.txt /app/lichess-bot/requirements.txt
 # Install the Python packages specified in requirements.txt
 RUN pip3 install --no-cache-dir -r /app/lichess-bot/requirements.txt
 
-COPY lichess-bot lichess-bot
+## Leela chess stuff
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libopenblas-dev \
+    ninja-build \
+    libgtest-dev \
+    git
+#     clang-6.0 \
+#     libstdc++-8-dev
+
+COPY lc0 lc0
+WORKDIR /app/lc0
+RUN git clone https://github.com/xianyi/OpenBLAS.git
+WORKDIR /app/lc0/OpenBLAS
+RUN make TARGET=ARMV8
+RUN pip3 install --no-cache-dir meson ninja
+WORKDIR /app/lc0
+# RUN CC=clang-6.0 CXX=clang++-6.0 ./build.sh -Ddefault_library=static
+# COPY lichess-bot /app/lichess-bot
+# WORKDIR lichess-bot

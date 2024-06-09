@@ -1,3 +1,6 @@
 [submodule "lichess-bot"]
 	path = lichess-bot
 	url = git@github.com:donaldflynn/lichess-bot.git
+[submodule "lc0"]
+	path = lc0
+	url = git@github.com:donaldflynn/lc0.git
